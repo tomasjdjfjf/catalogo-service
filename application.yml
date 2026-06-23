@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: usuarios-service
+          uri: http://54.167.72.25:8081
+          predicates:
+            - Path=/api/usuarios/**
+
+        - id: pagos-service
+          uri: http://35.168.92.208:8081
+          predicates:
+            - Path=/api/pagos/**
+
+        - id: trabajo-service
+          uri: http://35.168.92.208:8082
+          predicates:
+            - Path=/api/trabajos/**
+
+        - id: inventario-service
+          uri: http://54.167.72.25:8082
+          predicates:
+            - Path=/api/inventario/**
+
+        - id: soporte-service
+          uri: http://35.168.92.208:8080
+          predicates:
+            - Path=/api/soporte/**
